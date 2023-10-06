@@ -1,10 +1,9 @@
-import { Send } from "lucide-react";
+import { Loader, Send } from "lucide-react";
 import { Button } from "../ui/button";
 import { useContext, useRef } from "react";
 import { ChatContext } from "./ChatContext";
 import { Textarea } from "../ui/Textarea";
 import NoSSR from "react-no-ssr";
-import { useRouter } from "next/navigation";
 
 interface ChatInputProps {
   isDisabled?: boolean;
@@ -56,7 +55,11 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
                     textareaRef.current?.focus();
                   }}
                 >
-                  <Send className="h-4 w-4" />
+                  {isLoading || isDisabled ? (
+                    <Loader className="h-4 w-4 animate-spin" />
+                  ) : (
+                    <Send className="h-4 w-4" />
+                  )}
                 </Button>
               </div>
             </div>
