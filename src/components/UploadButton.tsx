@@ -10,6 +10,7 @@ import { useUploadThing } from "@/lib/uploadthing";
 import { useToast } from "./ui/use-toast";
 import { trpc } from "@/app/_trpc/client";
 import { useRouter } from "next/navigation";
+import { cn } from "@/lib/utils";
 
 const UploadDropzone = () => {
   const router = useRouter();
@@ -141,7 +142,7 @@ const UploadDropzone = () => {
   );
 };
 
-export default function UploadButton() {
+export default function UploadButton({ isAdmin }: { isAdmin: boolean }) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
 
   return (
@@ -154,7 +155,7 @@ export default function UploadButton() {
       }}
     >
       <DialogTrigger onClick={() => setIsOpen(true)} asChild>
-        <Button>Upload PDF</Button>
+        <Button className={cn(isAdmin ? "" : "hidden")}>Upload PDF</Button>
       </DialogTrigger>
 
       <DialogContent>

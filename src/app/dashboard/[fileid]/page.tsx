@@ -23,7 +23,7 @@ export default async function Page({ params }: PageProps) {
   const file = await db.file.findFirst({
     where: {
       id: fileid,
-      userId: user.id,
+      // userId: user.id,
     },
   });
 

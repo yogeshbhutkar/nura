@@ -16,7 +16,9 @@ export default async function Page() {
     },
   });
 
+  const isAdmin = dbUser?.isAdmin ?? false;
+
   if (!dbUser) redirect("/auth-callback?origin=dashboard");
 
-  return <Dashboard />;
+  return <Dashboard isAdmin={isAdmin} />;
 }

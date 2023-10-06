@@ -8,8 +8,9 @@ import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Button } from "./ui/button";
+import { cn } from "@/lib/utils";
 
-export default function Dashboard() {
+export default function Dashboard({ isAdmin }: { isAdmin: boolean }) {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
     string | null
   >(null);
@@ -33,8 +34,10 @@ export default function Dashboard() {
   return (
     <main className="mx-auto max-w-7xl md:p-10">
       <div className="mt-8 flex flex-col items-start justify-between gap-4 border-b border-gray-200 pb-5 sm:flex-row sm:items-center sm:gap-0">
-        <h1 className="mb-3 font-bold text-5xl text-gray-900">My Files</h1>
-        <UploadButton />
+        <h1 className="mb-3 font-bold text-5xl text-gray-900">
+          {isAdmin ? "My Files" : "Resources"}
+        </h1>
+        <UploadButton isAdmin={isAdmin} />
       </div>
 
       {/* display all user files. */}
@@ -78,7 +81,7 @@ export default function Dashboard() {
                   </div>
                   <Button
                     size={"sm"}
-                    className="w-full"
+                    className={cn("w-full", isAdmin ? "" : "hidden")}
                     variant={"destructive"}
                     onClick={() =>
                       deleteFile({
