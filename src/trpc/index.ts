@@ -23,7 +23,6 @@ export const appRouter = router({
         data: {
           id: user.id,
           email: user.email,
-          isAdmin: false,
         },
       });
     }
@@ -31,20 +30,22 @@ export const appRouter = router({
     return { success: true };
   }),
   getUserFiles: privateProcedure.query(async ({ ctx }) => {
-    // const { userId, user } = ctx;
+    const { userId, user } = ctx;
 
     return await db.file.findMany({
-      where: {},
+      where: {
+        userId,
+      },
     });
   }),
   deleteFile: privateProcedure
     .input(z.object({ id: z.string() }))
     .mutation(async ({ ctx, input }) => {
-      // const { userId } = ctx;
+      const { userId } = ctx;
       const file = await db.file.findFirst({
         where: {
           id: input.id,
-          // userId,
+          userId,
         },
       });
 
@@ -64,12 +65,12 @@ export const appRouter = router({
       })
     )
     .mutation(async ({ ctx, input }) => {
-      // const { userId } = ctx;
+      const { userId } = ctx;
 
       const file = await db.file.findFirst({
         where: {
           key: input.key,
-          // userId,
+          userId,
         },
       });
 
@@ -83,7 +84,7 @@ export const appRouter = router({
       const file = await db.file.findFirst({
         where: {
           id: input.fileId,
-          // userId: ctx.userId,
+          userId: ctx.userId,
         },
       });
 
@@ -106,14 +107,14 @@ export const appRouter = router({
       })
     )
     .query(async ({ ctx, input }) => {
-      // const { userId } = ctx;
+      const { userId } = ctx;
       const { fileId, cursor } = input;
       const limit = input.limit ?? INFINITE_QUERY_LIMIT;
 
       const file = await db.file.findFirst({
         where: {
           id: fileId,
-          // userId,
+          userId,
         },
       });
 

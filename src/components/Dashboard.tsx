@@ -9,6 +9,7 @@ import Link from "next/link";
 import { format } from "date-fns";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
+import { db } from "@/db";
 
 export default function Dashboard({ isAdmin }: { isAdmin: boolean }) {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
