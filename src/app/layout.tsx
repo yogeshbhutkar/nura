@@ -9,6 +9,7 @@ import "react-loading-skeleton/dist/skeleton.css";
 import "simplebar-react/dist/simplebar.min.css";
 import { Toaster } from "@/components/ui/toaster";
 import Head from "next/head";
+import MaxWidthWrapper from "@/components/MaxWidthWrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -34,7 +35,7 @@ export default function RootLayout({
         >
           <Toaster />
           <Navbar />
-          {children}
+          <MaxWidthWrapper>{children}</MaxWidthWrapper>
         </body>
       </Providers>
     </html>
