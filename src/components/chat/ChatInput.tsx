@@ -4,6 +4,7 @@ import { useContext, useRef } from "react";
 import { ChatContext } from "./ChatContext";
 import { Textarea } from "../ui/Textarea";
 import NoSSR from "react-no-ssr";
+import { useRouter } from "next/navigation";
 
 interface ChatInputProps {
   isDisabled?: boolean;
@@ -38,6 +39,8 @@ const ChatInput = ({ isDisabled }: ChatInputProps) => {
                       addMessage();
 
                       textareaRef.current?.focus();
+
+                      textareaRef;
                     }
                   }}
                 />

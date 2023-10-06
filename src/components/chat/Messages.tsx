@@ -35,7 +35,7 @@ export default function Messages({ fileId }: MessagesProps) {
   };
 
   const combinedMessages = [
-    ...(true ? [loadingMessage] : []),
+    ...(isLoading ? [loadingMessage] : []),
     ...(messages ?? []),
   ];
 
