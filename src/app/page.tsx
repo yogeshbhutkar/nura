@@ -21,7 +21,7 @@ export default function Home() {
         </p>
         <Link
           href="/dashboard"
-          className="mt-4 rounded-full flex items-center bg-green-500 text-white py-1 px-4 "
+          className="mt-4 rounded-full flex items-center bg-green-500 text-white py-2 px-7 "
         >
           Get started <ArrowRight className="ml-1.5 h-5 w-5" />
         </Link>
@@ -44,10 +44,10 @@ export default function Home() {
         <div className="mb-12 px-6 lg:px-8">
           <div className="mx-auto max-w-2xl sm:text-center">
             <h2 className="mt-2 font-bold text-4xl text-gray-900 sm:text-5xl">
-              Start chatting in minutes
+              Start asking queries in minutes
             </h2>
             <p className="mt-4 text-lg text-gray-600">
-              Chatting to your PDF files has never been easier than with Quill.
+              Getting healthcare insights has never been easier.
             </p>
           </div>
         </div>
@@ -56,43 +56,38 @@ export default function Home() {
         <ol className="my-8 space-y-4 pt-8 md:flex md:space-x-12 md:space-y-0">
           <li className="md:flex-1">
             <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
-              <span className="text-sm font-medium text-green-600">Step 1</span>
+              <span className="text-sm font-medium text-green-600">
+                For you
+              </span>
               <span className="text-xl font-semibold">
-                Sign up for an account
+                Get insights personalized to you.
               </span>
               <span className="mt-2 text-zinc-700">
-                Either starting out with a free plan or choose our{" "}
-                <Link
-                  href={"/pricing"}
-                  className="text-green-700 underline underline-offset-2"
-                >
-                  pro plan
-                </Link>
-                .
+                You can adjust your settings to fine-tune your personalization
+                and get the most out of your experience.
               </span>
             </div>
           </li>
           <li className="md:flex-1">
             <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
-              <span className="text-sm font-medium text-green-600">Step 2</span>
+              <span className="text-sm font-medium text-green-600">
+                Accessebility
+              </span>
               <span className="text-xl font-semibold">
-                Upload your PDF file
+                Access Nura from any browser.
               </span>
               <span className="mt-2 text-zinc-700">
-                We&apos;ll process your file and make it ready for you to chat
-                with.
+                No installations required. Sign up and start asking queries all
+                from your browser.
               </span>
             </div>
           </li>
           <li className="md:flex-1">
             <div className="flex flex-col space-y-2 border-l-4 border-zinc-300 py-2 pl-4 md:border-l-0 md:border-t-2 md:pb-0 md:pl-0 md:pt-4">
-              <span className="text-sm font-medium text-green-600">Step 3</span>
-              <span className="text-xl font-semibold">
-                Start asking questions
-              </span>
+              <span className="text-sm font-medium text-green-600">GPT</span>
+              <span className="text-xl font-semibold">Built using GPT</span>
               <span className="mt-2 text-zinc-700">
-                It&apos;s that simple. Try out Quill today - it really takes
-                less than a minute.
+                Uses GPT 3.5 from OpenAI to repsond in natural language.
               </span>
             </div>
           </li>

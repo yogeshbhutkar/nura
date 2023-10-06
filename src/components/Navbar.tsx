@@ -2,17 +2,22 @@ import React from "react";
 import MaxWidthWrapper from "./MaxWidthWrapper";
 import Link from "next/link";
 import { buttonVariants } from "./ui/button";
-import { LoginLink, RegisterLink } from "@kinde-oss/kinde-auth-nextjs/server";
+import { LoginLink } from "@kinde-oss/kinde-auth-nextjs/server";
 import { ArrowRight } from "lucide-react";
+import Image from "next/image";
+import logo from "../../public/logo.svg";
 
 export default function Navbar() {
   return (
     <nav className="sticky h-14 inset-x-0 top-0 z-30 w-full bg-white/75 backdrop-blur-lg transition-all">
       <MaxWidthWrapper>
         <div className="flex h-14 items-center justify-between">
-          <Link href={"/"} className="flex z-40 font-semibold ">
-            <span>Nura.</span>
-          </Link>
+          <div className="flex items-center gap-2">
+            <Image src={logo} alt={"Logo"} className="h-5 w-5" />
+            <Link href={"/"} className="flex z-40 font-semibold ">
+              <span>Nura.</span>
+            </Link>
+          </div>
           {/* TODO: Add mobile navbar */}
 
           <div className="hidden items-center space-x-4 sm:flex">
