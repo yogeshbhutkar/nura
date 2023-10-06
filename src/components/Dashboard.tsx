@@ -3,13 +3,13 @@
 import React, { useState } from "react";
 import UploadButton from "./UploadButton";
 import { trpc } from "@/app/_trpc/client";
-import { Ghost, Loader2, MessageSquare, Plus, Trash } from "lucide-react";
+import { Calendar, Ghost, Loader2, MessageSquare, Trash } from "lucide-react";
 import Skeleton from "react-loading-skeleton";
 import Link from "next/link";
 import { format } from "date-fns";
 import { Button } from "./ui/button";
 import { cn } from "@/lib/utils";
-import { db } from "@/db";
+// import { db } from "@/db";
 
 export default function Dashboard({ isAdmin }: { isAdmin: boolean }) {
   const [currentlyDeletingFile, setCurrentlyDeletingFile] = useState<
@@ -56,7 +56,7 @@ export default function Dashboard({ isAdmin }: { isAdmin: boolean }) {
                 className="col-span-1 divide-y divide-gray-200 rounded-lg bg-white shadow transition hover:shadow-lg"
               >
                 <Link
-                  href={`/dashboard/${file.id}`}
+                  href={isAdmin ? `/dashboard/${file.id}` : `/dashboard/chat`}
                   className="flex flex-col gap-2"
                 >
                   <div className="pt-6 px-6 flex w-full items-center justify-between space-x-6">
@@ -73,7 +73,7 @@ export default function Dashboard({ isAdmin }: { isAdmin: boolean }) {
 
                 <div className="px-6 mt-4 grid grid-cols-3 place-items-center py-2 gap-6 text-xs text-zinc-500">
                   <div className="flex items-center gap-2">
-                    <Plus className="h-4 w-4" />
+                    <Calendar className="h-4 w-4" />
                     {format(new Date(file.createdAt), "MMM yyyy")}
                   </div>
                   <div className="flex items-center gap-2">

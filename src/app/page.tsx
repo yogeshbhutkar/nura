@@ -1,10 +1,28 @@
 import MaxWidthWrapper from "@/components/MaxWidthWrapper";
-import { buttonVariants } from "@/components/ui/button";
+import { db } from "@/db";
+import { getKindeServerSession } from "@kinde-oss/kinde-auth-nextjs/server";
+// import { buttonVariants } from "@/components/ui/button";
 import { ArrowRight } from "lucide-react";
-import Image from "next/image";
+// import Image from "next/image";
 import Link from "next/link";
 
-export default function Home() {
+export default async function Home() {
+  const { getUser } = getKindeServerSession();
+  const user = getUser();
+
+  let isAdmin = false;
+
+  if (user?.id) {
+    const getCurrUser = await db.user.findFirst({
+      where: {
+        id: user.id,
+      },
+    });
+    if (getCurrUser?.isAdmin) {
+      isAdmin = getCurrUser.isAdmin;
+    }
+  }
+
   return (
     <>
       <MaxWidthWrapper className="relative flex flex-col h-screen items-center -mt-10 text-center justify-center">
@@ -20,7 +38,7 @@ export default function Home() {
           upload your file and start asking questions right away.
         </p>
         <Link
-          href="/dashboard"
+          href={isAdmin ? "/dashboard" : `/dashboard/chat`}
           className="mt-4 rounded-full flex items-center bg-green-500 text-white py-2 px-7 "
         >
           Get started <ArrowRight className="ml-1.5 h-5 w-5" />
